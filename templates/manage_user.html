@@ -1,0 +1,32 @@
+{% include 'manage-head.html' %}
+
+<!-- Content Section -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Manage Users</h2>
+        <table class="table table-bordered user-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Level</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.level }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_user', id=user.id) }}" class="btn btn-primary btn-sm">Edit</a> 
+                        <!-- Add more actions like delete if needed-->
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+{% include 'manage-footer.html' %}

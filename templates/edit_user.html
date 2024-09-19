@@ -1,0 +1,24 @@
+{% include 'manage-head.html' %}
+
+
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Edit User</h2>
+        <form action="{{ url_for('update_user', id=user.id) }}" method="POST">
+            
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" value="{{ user.username }}" required>
+            </div>
+            <div class="mb-3">
+                <label for="level" class="form-label">User Level</label>
+                <select class="form-select" id="level" name="level" required>
+                    <option value="user" {% if user.level == 'user' %}selected{% endif %}>User</option>
+                    <option value="admin" {% if user.level == 'admin' %}selected{% endif %}>Admin</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Update User</button>
+        </form>
+    </div>
+
+
+{% include 'manage-footer.html' %}
